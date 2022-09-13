@@ -8,48 +8,71 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var write = ""
-    @State var state = ""
+    @State var TheGrade = ""
+    @State var OnGrade = ""
     var body: some View {
-        VStack{
-            Text("حاسبة الدرجات")
-                .font(.title)
-                .fontWeight(.bold)
-                .foregroundColor(Color.gray)
-            
-            Image ("cu1")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 200, height: 200)
-                .padding(80)
-            TextField("tybe your grade",text: $write)
-                .multilineTextAlignment(.center)
-            Spacer()
-            Text("أحسب درجتي")
-                .font(.largeTitle)
-                .background(.red)
-                .clipShape(Capsule())
-                .frame(width: 250)
-                .onTapGesture {
-                    if (Int(write) ?? 0 ) >= 90 {
-                        
-                        state = "ممتاز"
-                    }
-                    else if (Int(write) ?? 0 ) >= 80 {
-                        
-                        state = "جيد جداً"
-                    }
-                    
-                }
-                        
-        }
-        background(.blue)
-            .scaledToFit()
-    }
         
-    struct ContentView_Previews: PreviewProvider {
-        static var previews: some View {
-            ContentView()
+        ZStack{
+            
+            Color.yellow.ignoresSafeArea()
+            VStack{
+                Text("حاسبة الدرجات المطورة")
+                    .foregroundColor(.white)
+                    .font(.largeTitle)
+                
+                Image("cu1")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 200, height: 200)
+                Spacer()
+                TextField("ادخل الدرجة التي حصلت عليها", text: $TheGrade)
+                    .frame(width: 300, height: 40)
+                    .background(Color.cyan)
+                    .padding()
+                Text("أحسب درجتي")
+                    .padding()
+                    .background(Color.teal)
+                    .clipShape(Capsule())
+                    .onTapGesture {
+                        if Int(TheGrade) ?? 0 >= 90 {
+                            OnGrade = "ممتاز"
+                        } else if Int(TheGrade) ?? 0 >= 80 {
+                            OnGrade = "جيد جداً"
+                            
+                        } else if Int(TheGrade) ?? 0 >= 70 {
+                            OnGrade = "جيد"
+                            
+                        }else if Int(TheGrade) ?? 0 >= 60 {
+                            OnGrade = "lrfmg"
+                            
+                        } else {
+                            OnGrade = "شكلك عايدها ياحلو"
+                        }
+                    }
+                
+                
+                
+                
+                Text("لقد حصلت على الدرجة")
+                Spacer()
+                Text(OnGrade)
+                    .font(.largeTitle)
+                    .fontWeight(.semibold)
+                
+                
+                
+            }
+            
+            
+            }
         }
+        
+        
+        
+        struct ContentView_Previews: PreviewProvider {
+            static var previews: some View {
+                ContentView()
+            }
+        }
+        
     }
-}

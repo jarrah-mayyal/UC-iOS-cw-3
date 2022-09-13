@@ -14,7 +14,7 @@ struct ContentView: View {
         
         ZStack{
             
-            Color.yellow.ignoresSafeArea()
+            Color.brown.ignoresSafeArea()
             VStack{
                 Text("حاسبة الدرجات المطورة")
                     .foregroundColor(.white)
@@ -27,11 +27,11 @@ struct ContentView: View {
                 Spacer()
                 TextField("ادخل الدرجة التي حصلت عليها", text: $TheGrade)
                     .frame(width: 300, height: 40)
-                    .background(Color.cyan)
+                    .background(Color.white)
                     .padding()
                 Text("أحسب درجتي")
                     .padding()
-                    .background(Color.teal)
+                    .background(Color.white)
                     .clipShape(Capsule())
                     .onTapGesture {
                         if Int(TheGrade) ?? 0 >= 90 {
